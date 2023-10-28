@@ -1,0 +1,41 @@
+/* login.component.scss */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-card {
+    width: 500px;
+    height: 400px;
+    border-radius: 20px;
+    mat-card-title{
+        text-align: center;
+        margin-top: 20px;
+        font-size: 30px;
+        margin-bottom: 20px;
+        color: #7883ee;
+        
+    }
+    .btn_login{
+        width: 170px;
+        height: 45px;
+        background-color: #7883ee;
+        border-radius: 5px;
+        display: block;
+        margin: 0 auto;
+        color: white;
+        
+    }
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .register-link {
+    text-align: center;
+    margin-top: 16px;
+  }
+  

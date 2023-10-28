@@ -1,0 +1,57 @@
+.mat-elevation-z8 {
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .horizontal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+  
+    .header-title {
+      font-size: 24px;
+    }
+  
+    .header-actions {
+      display: flex;
+      gap: 16px;
+  
+      .mat-form-field {
+        width: 200px;
+      }
+  
+      .button-container {
+        display: flex;
+        gap: 16px;
+      }
+      
+      /* Adjust styles for the buttons as needed */
+      button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 50%; /* Makes the buttons round */
+        width: 48px; /* Set a fixed width */
+        height: 48px; /* Set a fixed height */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+      
+    }
+  }
+  table {
+    width: 100%;
+  }
+  

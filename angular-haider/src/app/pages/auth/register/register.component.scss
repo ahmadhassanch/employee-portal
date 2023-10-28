@@ -1,0 +1,40 @@
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .signup-card {
+    width: 700px;
+    height: 700px;
+    border-radius: 20px;
+  
+    mat-card-title {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 30px;
+      margin-bottom: 20px;
+      color: #7883ee;
+    }
+  
+    .btn_register {
+      width: 170px;
+      height: 45px;
+      background-color: #7883ee;
+      border-radius: 5px;
+      display: block;
+      margin: 0 auto;
+      color: white;
+    }
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .login-link {
+    text-align: center;
+    margin-top: 16px;
+  }
+  

@@ -1,0 +1,26 @@
+<div class="side-bar-main" fxLayout="column" fxLayoutAlign="space-between center">
+
+    <div class="bar-body">
+        <div class="list">
+            <ng-container *ngFor="let item of menuList">
+                <div [ngClass]="{'list-item-selected':item.rout==selectedRout, 'list-items':item.rout!=selectedRout}"
+                    FxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px" [routerLink]="item.rout"
+                    (click)="selectedRout  = item.rout">
+                    <mat-icon style="color: #7883ee;">{{item.icon}}</mat-icon>
+                    <div>{{item.title}}</div>
+                </div>
+
+            </ng-container>
+
+        </div>
+    </div>
+    <div class="bar-footer" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
+
+        <!-- <img src='/assets/images/logout.svg' style="width: 20px; height: 20px; "> -->
+        <!-- <mat-icon>assignment_return</mat-icon>
+        <div class="logout" (click)="onLogOut()">Logout</div> -->
+        <!-- <button mat-raised-button color="primary">Log Out</button> -->
+
+    </div>
+
+</div>

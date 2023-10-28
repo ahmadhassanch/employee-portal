@@ -1,0 +1,67 @@
+.top-bar {
+    .container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+      }
+    
+      .app-name {
+        font-weight: bold;
+        color: white;
+        margin-left: 10px;
+        /* Expands to take remaining space in the toolbar */
+
+
+      }
+
+      .title {
+        font-weight: bold;
+        color: white;
+        text-align: center;
+        justify-content: center;
+        flex-wrap: wrap; 
+        flex: 1;/* Expands to take remaining space in the toolbar */
+      }
+      .app-icon {
+        height: 30px;
+        
+      }
+    
+      .round-button {
+        width: 48px; /* Set the width and height to create a round shape */
+        height: 48px;
+        background-color: #7883ee; /* Set the background color to white */
+
+        border-radius: 50%; /* Make it round by setting border-radius to 50% */
+      }
+      
+      .round-button .mat-icon {
+        color: white; /* Set the icon color to white */
+      }
+      
+      .icons {
+        color: white;
+      }
+    
+  }
+  
+.menu-app {
+  display: flex;
+  align-items: center;
+
+  .mat-list-item {
+    margin-right: 20px; /* Adjust spacing between items */
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column; /* Switch to a column layout on small screens */
+
+    .mat-list-item {
+      margin-right: 0; /* Remove right margin for spacing between items */
+      margin-bottom: 10px; /* Add vertical spacing between items */
+    }
+  }
+}
+  
+  

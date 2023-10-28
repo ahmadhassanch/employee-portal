@@ -1,0 +1,30 @@
+<div class="content-main" fxLayout="column" fxLayoutAlign="start start">
+    <div class="settings-card" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="5px">
+        
+        <div class="action-btn" fxLayout="row" fxLayoutAlign="center center" (click)="getAllRoles()"><mat-icon>refresh</mat-icon></div> 
+        <div class="action-btn" fxLayout="row" fxLayoutAlign="center center" (click)="onAddRole()"><mat-icon>add</mat-icon></div>  
+    </div>
+
+    <div class="table-card">
+        <table >
+            <tr class="table-head">
+                <td class="table-col">Title</td>
+                <td class="table-col">Scale</td>
+                <td class="table-col">Permissions</td>
+                <td class="table-col-last">Actions</td>
+            </tr>
+
+            <ng-container *ngFor="let role of allRoles">
+                <tr>
+                    <td class="table-col">{{role.title}}</td>
+                    <td class="table-col">{{role.scale}}</td>
+                    <td class="table-col">{{role.permissions}}</td>
+                    <td class="table-col-last">
+                        <mat-icon (click)="onEdit(role)">edit</mat-icon>
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+</div>
+

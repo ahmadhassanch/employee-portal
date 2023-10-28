@@ -1,0 +1,88 @@
+@import "src/custom-theme";
+
+.form-container{
+    width: 100%;
+    height: 100%;
+
+    ::placeholder {
+        color: #6b859e;
+        font-size: 12px;
+        opacity: 1; 
+      }
+    // background-color: red;
+
+    .header {
+        height: 57px;
+        background-color: #f6f7fb;
+        font-size: 16px;
+        line-height: 1.5;
+        padding: 15px;
+        border-bottom: 1px solid #ebedf1;
+    }
+
+    .body {
+        height: calc(100% - 57px - 57px);
+        // background-color: orangered;
+        overflow-y: auto;
+        padding: 15px;
+        width: 100%;
+
+        .input-container {
+            width: 100%;
+
+            .lable-title {
+              font-size: .8125rem;
+              color: #5f5f5f;
+              margin-bottom: 2px;
+            }
+
+            .date-container {
+              min-width: 100%;
+              border: 1px solid #c4c4c4;
+              border-radius: 2px;
+            }
+
+            .date-container:hover {
+              border: 1px solid #666;
+
+            }
+
+            .input-section {
+              width: 100%;
+            }
+
+            .input-content {
+                border: 1px solid #ced4da;
+                outline: none;
+                padding: 0 0.75rem;
+                width: 100%;
+                max-width: 375px;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 1.5;
+                border-radius: 8px;
+                height: calc(1.5em + 0.75rem + 2px);
+              }
+        
+              .input-content:focus {
+                // border: 1px solid #666;
+                border-color: #babcf3;
+                background-color: #f6f7fb;
+                color: #495057;
+              }
+          }
+
+    }
+
+    .footer {
+        height: 57px;
+        padding: 0px  15px 15px 15px;
+        // background-color: orange;
+
+        .action-btns {
+
+            padding: 0px 20px;
+        }
+    }
+
+}

@@ -1,0 +1,48 @@
+<div class="table-main" fxLayout="column" fxLayoutAlign="start start">
+   <div class="table-content">
+    <div class="top-bar" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="title">{{config.titel}}</div>
+        <div class="actions" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="5px">
+          <input class="search" type="text" placeholder="Search here.." name="searchText" id="search" value="">
+          <div class="action-btn-container" fxLayout="row" fxLayoutAlign="center center">
+            <mat-icon  (click)="onSearchClick()">search</mat-icon>
+          </div>
+          <div class="action-btn-container" fxLayout="row" fxLayoutAlign="center center">
+            <mat-icon  (click)="onAction('refresh')">refresh</mat-icon>
+          </div>
+          <div class="action-btn-container" fxLayout="row" fxLayoutAlign="center center">
+            <mat-icon  (click)="onAction('addNew')">add</mat-icon>
+          </div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="table-card">
+        <table >
+
+          <tr class="table-head">
+            <ng-container *ngFor="let col of config.displayColumn; let isLast=last">
+              <td [ngClass]="{'table-col':isLast==false, 'table-col-last':isLast==true}">{{col}}</td>
+            </ng-container>
+          </tr>
+
+          <ng-container *ngFor="let item of config.tableList">
+            <tr>
+
+              <ng-container *ngFor="let col of config.columns; let isLast=last">
+                <td *ngIf="col!='Actions'" [ngClass]="{'table-col':isLast==false, 'table-col-last':isLast==true}">{{item[col]}}</td>
+                <td *ngIf="col=='Actions'" [ngClass]="{'table-col':isLast==false, 'table-col-last':isLast==true}">
+                  <ng-container  *ngFor="let act of item[col];">
+                   <mat-icon style="color:#be513c; cursor: pointer;" (click)="onAction(act, item)">{{act}}</mat-icon>
+                  </ng-container>
+                </td>
+              </ng-container>
+            </tr>
+          </ng-container>
+        </table>
+
+
+      </div>
+
+   </div>
+</div>

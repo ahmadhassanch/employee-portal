@@ -1,0 +1,30 @@
+<div class="content-main" fxLayout="column" fxLayoutAlign="start start">
+    <div class="settings-card" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="5px">
+        
+        <div class="action-btn" fxLayout="row" fxLayoutAlign="center center" (click)="getAllTasks()"><mat-icon>refresh</mat-icon></div> 
+        <div class="action-btn" fxLayout="row" fxLayoutAlign="center center" (click)="onAddTasks()"><mat-icon>add</mat-icon></div>  
+    </div>
+
+    <div class="table-card">
+        <table >
+            <tr class="table-head">
+                <td class="table-col">Task Id</td>
+                <td class="table-col">Title</td>
+                <td class="table-col">Add Subtasks</td>
+                <td class="table-col-last">Actions</td>
+            </tr>
+
+            <ng-container *ngFor="let task of allTasks">
+                <tr>
+                    <td class="table-col">{{task.taskId}}</td>
+                    <td class="table-col">{{task.title}}</td>
+                    <td class="table-col"><mat-icon (click)="onAddSubTasks(task)">description</mat-icon></td>
+                    <td class="table-col-last">                
+                        <mat-icon (click)="onEdit(task)">edit</mat-icon>
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+</div>
+

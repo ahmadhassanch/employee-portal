@@ -1,0 +1,23 @@
+<div class="form-container" fxLayout="column">
+    <div class="header" fxLayout="row" fxLayoutAlign="start center">
+        <span style="font-weight: 500;">Add Sub Task</span>
+    </div>
+    <div class="body"  fxLayout="column" fxLayoutGap="15px">
+
+        <div class="input-double" fxLayout="row" fxLayoutAlign="space-between center">
+            {{task.title}} <mat-icon (click)="onAddSubTasks()">add</mat-icon>
+        </div>
+
+        <ng-container *ngFor="let subTask of allTasks; let index=index">
+            <div fxLayout="row" class="input-section" fxLayoutAlign="space-between center">
+                <textarea required class="input-content" type="text" placeholder="Type Sub Task" [(ngModel)]="subTask.title"></textarea>
+                <button class="remove-btn" (click)='onRemoveItem(subTask, index)'><mat-icon>remove_circle_outline</mat-icon></button>
+            </div>
+        </ng-container>
+    </div>
+    
+    <div class="footer"  fxLayout="row" fxLayoutAlign="end end"  fxLayoutGap="10px">
+        <button class="action-btns" mat-button style="background-color: #f6f7fb; color:#495057" (click)="onCancel()">Cancel</button>
+        <button class="action-btns" mat-raised-button color="primary" (click)="onSave()">Save</button>
+    </div>
+</div>

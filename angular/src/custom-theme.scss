@@ -1,0 +1,77 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$dark-primary-text: rgba(black, 0.87);
+$dark-secondary-text: rgba(black, 0.54);
+$dark-disabled-text: rgba(black, 0.38);
+$dark-dividers: rgba(black, 0.12);
+$dark-focused: rgba(black, 0.12);
+$light-primary-text: white;
+$light-secondary-text: rgba(white, 0.7);
+$light-disabled-text: rgba(white, 0.5);
+$light-dividers: rgba(white, 0.12);
+$light-focused: rgba(white, 0.12);
+
+$invoice-primary-pallete: (
+  50: #faf0ed,
+  100: #f3d9d2,
+  200: #ebc0b5,
+  300: #e3a797,
+  400: #dd9480,
+  500: #d7816a,
+  600: #d37962,
+  700: #cd6e57,
+  800: #c7644d,
+  900: #be513c,
+  A100: #ffffff,
+  A200: #ffdfd9,
+  A400: #ffb3a6,
+  A700: #ff9e8c,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $dark-primary-text,
+    700: $dark-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: black,
+  )
+);
+
+$demo-primary: mat.define-palette($invoice-primary-pallete, 500);
+$demo-accent: mat.define-palette($invoice-primary-pallete, 200);
+$demo-warn: mat.define-palette($invoice-primary-pallete, 900);
+
+
+$light-theme: mat.define-light-theme((
+ color: (
+   primary: $demo-primary,
+   accent: $demo-accent,
+   warn: $demo-warn
+ )
+));
+
+
+$primary: mat.get-color-from-palette($invoice-primary-pallete, 500);
+$primaryContrast:white;
+$primarText:#333;
+
+$infoTextColor:#3985e6;
+
+$secondary: mat.get-color-from-palette($invoice-primary-pallete, 400);
+$secondaryContrast:white;
+
+$accent: mat.get-color-from-palette($invoice-primary-pallete, 200);
+$warn: mat.get-color-from-palette($invoice-primary-pallete, 900);
+
+
+@include mat.core-theme($light-theme);
+@include mat.all-component-colors($light-theme);

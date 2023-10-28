@@ -1,0 +1,46 @@
+<div class="main-container" fxLayout="column" fxLayoutAlign="start start">
+    <div class="content-head">
+     <div class="top-bar" fxLayout="row" fxLayoutAlign="space-between center">
+         <div class="title">Team</div>
+     </div>
+ 
+     <div class="content-body">
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" style="height: 100%;">
+            <mat-tab label="Members"><ng-template *ngTemplateOutlet="members"></ng-template></mat-tab>
+            <mat-tab label="Attendence"><ng-template *ngTemplateOutlet="attendence"></ng-template></mat-tab>
+            <mat-tab label="Reports"><ng-template *ngTemplateOutlet="report"></ng-template></mat-tab>
+            <mat-tab label="Progress"><ng-template *ngTemplateOutlet="progress"></ng-template></mat-tab>
+          </mat-tab-group>
+       </div>
+    </div>
+ </div>
+
+ <ng-template #report><report-table class="tab-content-container"></report-table></ng-template>
+ 
+ <ng-template #progress><progress-table class="tab-content-container"></progress-table></ng-template>
+
+ <ng-template #attendence><team-attendence class="tab-content-container"></team-attendence></ng-template>
+
+ <ng-template #members>
+    <div class="table-card">
+        <table >
+            <tr class="table-head">
+                <td class="table-col">Name</td>
+                <td class="table-col">Designation</td>
+                <td class="table-col">Phone</td>
+                <td class="table-col-last">Joining Date</td>
+            </tr>
+
+            <ng-container *ngFor="let member of teamMembers">
+                <tr>
+                    <td class="table-col">{{member.fName}} {{member.lName}}</td>
+                    <td class="table-col">{{member.designation}}</td>
+                    <td class="table-col">{{member.phone}}</td>
+                    <td class="table-col-last">
+                        <ng-container *ngIf="member.joiningDate">{{member.joiningDate * 1000 | date}}</ng-container>
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+ </ng-template>

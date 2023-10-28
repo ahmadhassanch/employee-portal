@@ -1,0 +1,27 @@
+<div class="form-container" fxLayout="column" fxLayoutAlign="space-between start">
+    <div class="header" fxLayout="row" fxLayoutAlign="start center">
+        <span style="font-weight: 500;">Activate Task</span>
+    </div>
+    <div class="body" [formGroup]="taskForm" fxLayout="column" fxLayoutGap="15px">
+
+
+      <div class="input-container" fxLayout="column" fxLayoutAlign="start start" fxFlex="100">
+        <mat-label  class="lable-title">Task</mat-label>
+        <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+            <mat-select class="input-content" formControlName="taskId">
+                <mat-option *ngFor="let task of tasks" [value]="task.taskId">
+                  {{task.title}}
+                </mat-option>
+              </mat-select>
+        </div>
+    </div>
+  </div>
+    
+    <div class="footer"  fxLayout="row" fxLayoutAlign="end end"  fxLayoutGap="10px">
+        <button class="action-btns" mat-button style="background-color: #f6f7fb; color:#495057" (click)="onCancel()">Cancel</button>
+        <button class="action-btns" mat-raised-button color="primary" (click)="onSave()"
+        [disabled]="!taskForm.valid"
+        >Save</button>
+    </div>
+
+</div>

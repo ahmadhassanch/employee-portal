@@ -1,0 +1,88 @@
+<div class="content-main" fxLayout="column" fxLayoutAlign="start start">
+    <div class="settings-card" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="5px">
+        
+      <div class="filter-section" fxFlex="85" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+        <div class="input-container" fxLayout="column" fxLayoutAlign="center start">
+          <mat-label class="lable-title">Choose a date</mat-label>
+          <div fxLayout="row" fxLayoutAlign="start center" style="height: 25px;">
+              <input class="input-content" [formControl]="reportDate" matInput [matDatepicker]="datepicker">
+              <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker>
+                  <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                  </mat-datepicker-actions>
+              </mat-datepicker>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-section" fxFlex="15" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="5px">
+        <div class="action-btn" fxLayout="row" fxLayoutAlign="center center" (click)="getTeamReports()"><mat-icon>refresh</mat-icon></div>
+      </div>
+
+    </div>
+
+    <div class="table-card">
+        <table >
+            <tr class="table-head">
+                <td class="table-col">Name</td>
+                <td class="table-col">Date</td>
+                <td class="table-col-last">Description</td>
+                <!-- <td class="table-col-last">Actions</td> -->
+            </tr>
+
+            <ng-container *ngFor="let reports of teamReports">
+                <tr>
+                    <td class="table-col">{{reports.fName}} {{reports.lName}}</td>
+                    <td class="table-col"><ng-container *ngIf="reports.reportDate">{{reports.reportDate * 1000 | date}}</ng-container></td>
+                    <td class="table-col-last">{{reports.description}}</td>
+                    <!-- <td class="table-col-last">
+                        <mat-icon >edit</mat-icon>
+                    </td> -->
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+</div>
+
+
+<!-- <div no-border>
+  <div color="tertiary">
+    <title>Live Chat</title>
+  </div>
+</div>
+
+<div>
+  <div>
+    <div>
+      There are currently <strong>{{users}}</strong> users online. Start
+      chatting!
+    </div>
+  </div>
+
+  <ul lines="none">
+    <li *ngFor="let message of messages"> {{message}} </li>
+  </ul>
+</div>
+
+<div>
+  <div>
+    <textarea
+      spellcheck="true"
+      autocomplete="true"
+      autocorrect="true"
+      rows="1"
+      class="chat-input"
+      [(ngModel)]="message"
+      placeholder="type message..."
+      (keyup.enter)="addChat()"
+    >
+    </textarea>
+
+      <button (click)="addChat()" slot="end" class="send-chat-button">
+          send
+      </button>
+  </div>
+</div> -->
+

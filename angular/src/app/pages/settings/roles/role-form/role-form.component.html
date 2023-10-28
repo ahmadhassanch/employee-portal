@@ -1,0 +1,53 @@
+<div class="form-container" fxLayout="column">
+    <div class="header" fxLayout="row" fxLayoutAlign="start center">
+        <span style="font-weight: 500;">Add New Role</span>
+    </div>
+    <div class="body" [formGroup]="roleForm" fxLayout="column" fxLayoutGap="15px">
+
+      <div class="input-double" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="input-container" fxLayout="column" fxLayoutAlign="start start" style="width: 48%;">
+          <mat-label  class="lable-title">Title</mat-label>
+          <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+              <input required class="input-content" type="text" formControlName="title" placeholder="Type Title" style="min-width: 95%;">
+          </div>
+      </div>
+
+      <div class="input-container" fxLayout="column" fxLayoutAlign="start start" style="width: 48%;">
+          <mat-label  class="lable-title">Role  </mat-label>
+          <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+              <mat-select class="input-content" formControlName="scale">
+                  <mat-option *ngFor="let scaleVal of scalesList" [value]="scaleVal">
+                    {{scaleVal}}
+                  </mat-option>
+                </mat-select>
+          </div>
+      </div>
+
+      </div>
+        <div class="input-container" fxLayout="column" fxLayoutAlign="start start" style="width: 50%;">
+            <mat-label class="lable-title">Permissions</mat-label>
+            <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+            <mat-select formControlName="permissions" multiple class="input-content" >
+              <mat-select-trigger>
+                {{roleForm.controls['permissions'].value?.[0] || ''}}
+                <span *ngIf="(roleForm.controls['permissions'].value?.length || 0) > 1">
+                  (+{{(roleForm.controls['permissions'].value?.length || 0) - 1}} {{roleForm.controls['permissions'].value?.length === 2 ? 'other' : 'others'}})
+                </span>
+              </mat-select-trigger>
+              <mat-option *ngFor="let topping of configurationList" [value]="topping">{{topping | titlecase}}</mat-option>
+            </mat-select>
+            </div>
+         </div>
+    </div>
+    
+    <div class="footer"  fxLayout="row" fxLayoutAlign="end end"  fxLayoutGap="10px">
+        <button class="action-btns" mat-button style="background-color: #f6f7fb; color:#495057" (click)="onCancel()">Cancel</button>
+        <button *ngIf="!isEdit" class="action-btns" mat-raised-button color="primary" (click)="onSave()"
+        [disabled]="!roleForm.valid"
+        >Save</button>
+
+        <button *ngIf="isEdit" class="action-btns" mat-raised-button color="primary" (click)="onUpdate()"
+        [disabled]="!roleForm.valid"
+        >Update</button>
+    </div>
+</div>

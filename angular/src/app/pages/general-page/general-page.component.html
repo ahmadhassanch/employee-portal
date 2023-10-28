@@ -1,0 +1,21 @@
+<div class="content-main" fxLayout="column" fxLayoutAlign="start start">
+    <div class="content-header" fxLayout="row" fxLayoutAlign="center center">
+        <img src='/assets/images/chi.png' style="width: 45px; height: 45px;">
+        <span class="title">Cognitive Health International</span> 
+
+        
+    </div>
+    <div class="menu">
+        <mat-icon (click)="cont.toggle()">menu</mat-icon>
+    </div>
+      
+    <div class="content-table">
+        <mat-expansion-panel #cont >
+
+            <side-bar></side-bar>
+        </mat-expansion-panel>
+
+        <router-outlet></router-outlet>
+    </div>
+
+</div>

@@ -1,0 +1,27 @@
+<div class="form-container" fxLayout="column">
+    <div class="header" fxLayout="row" fxLayoutAlign="start center">
+        <span style="font-weight: 500;">Add New Task</span>
+    </div>
+    <div class="body" [formGroup]="taskForm" fxLayout="column" fxLayoutGap="15px">
+
+      <div class="input-double" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="input-container" fxLayout="column" fxLayoutAlign="start start" style="width: 98%;">
+          <mat-label  class="lable-title">Title</mat-label>
+          <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+              <input required class="input-content" type="text" formControlName="title" placeholder="Type Title" style="min-width: 95%;">
+          </div>
+      </div>
+      </div>
+    </div>
+    
+    <div class="footer"  fxLayout="row" fxLayoutAlign="end end"  fxLayoutGap="10px">
+        <button class="action-btns" mat-button style="background-color: #f6f7fb; color:#495057" (click)="onCancel()">Cancel</button>
+        <button *ngIf="!isEdit" class="action-btns" mat-raised-button color="primary" (click)="onSave()"
+        [disabled]="!taskForm.valid"
+        >Save</button>
+
+        <button *ngIf="isEdit" class="action-btns" mat-raised-button color="primary" (click)="onUpdate()"
+        [disabled]="!taskForm.valid"
+        >Update</button>
+    </div>
+</div>

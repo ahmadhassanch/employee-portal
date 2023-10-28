@@ -1,0 +1,143 @@
+<div class="form-container" form [formGroup]="employeeForm" fxLayout="column">
+    <div class="header" fxLayout="row" fxLayoutAlign="start center">
+        <span style="font-weight: 500;">{{isEdit? 'Edit Employee' : 'Create Employee'}}</span>
+    </div>
+
+    <div class="body" fxLayout="column" fxLayoutGap="15px">
+
+        <div class="input-double" fxLayout="row" fxLayoutAlign="center center">
+            <image-viewer [imageUrl]="employeeForm.controls['profileImage'].value" [title]="'Profile Image'"
+                [folderName]="'profile'" [getEndpoint]="'uploads/getImage'" [uploadEndpoint]="'uploads'"
+                (uploadedImage)="onImageReceived($event)"></image-viewer>
+        </div>
+
+        <div class="input-double" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="input-container" fxLayout="column" fxLayoutAlign="start start" fxFlex="49">
+                <mat-label class="lable-title">First Name <span style="color: #ff7848;">*</span> </mat-label>
+                <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+                    <input class="input-content" formControlName="fName" type="text" placeholder="Enter First Name">
+                </div>
+            </div>
+
+            <div class="input-container" fxLayout="column" fxLayoutAlign="start start" fxFlex="49">
+                <mat-label class="lable-title">Last Name</mat-label>
+                <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+                    <input class="input-content" formControlName="lName" type="text" placeholder="Enter Last Name">
+                </div>
+            </div>
+        </div>
+
+        <div class="input-double" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="input-container" fxLayout="column" fxLayoutAlign="start start" fxFlex="49">
+                <mat-label class="lable-title">Father Name </mat-label>
+                <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+                    <input class="input-content" formControlName="fatherName" type="text"
+                        placeholder="Enter Fathers Name">
+                </div>
+            </div>
+
+            <div class="input-container" fxLayout="column" fxLayoutAlign="start start" fxFlex="49">
+                <mat-label class="lable-title">Cnic </mat-label>
+                <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+                    <input class="input-content" formControlName="nic" type="text" placeholder="Enter NIC">
+                </div>
+            </div>
+        </div>
+
+        <div class="input-double" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="input-container" fxLayout="column" fxLayoutAlign="start start" fxFlex="49">
+                <mat-label class="lable-title">Username</mat-label>
+                <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+                    <input class="input-content" formControlName="userName" type="text" placeholder="Enter Username">
+                </div>
+            </div>
+
+            <div class="input-container" fxLayout="column" fxLayoutAlign="start start" fxFlex="49">
+                <mat-label class="lable-title">Password</mat-label>
+                <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+                    <input class="input-content" formControlName="password" type="text" placeholder="Enter Password">
+                </div>
+            </div>
+        </div>
+
+        <div class="input-double" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="input-container" fxLayout="column" fxLayoutAlign="start start" fxFlex="49">
+                <mat-label class="lable-title">Phone </mat-label>
+                <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+                    <input class="input-content" formControlName="phone" type="number" placeholder="Enter Phone Number">
+                </div>
+            </div>
+
+            <div class="input-container" fxLayout="column" fxLayoutAlign="start start" fxFlex="49">
+                <mat-label class="lable-title">Email</mat-label>
+                <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+                    <input class="input-content" formControlName="emailOffice" type="text" placeholder="Enter Email">
+                </div>
+            </div>
+        </div>
+
+        <div class="input-double" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="input-container" fxLayout="column" fxLayoutAlign="start start" fxFlex="49">
+                <mat-label class="lable-title">Role </mat-label>
+                <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+                    <mat-select class="input-content" formControlName="roleId">
+                        <mat-option *ngFor="let role of rloes" [value]="role.roleId">
+                            {{role.title}}
+                        </mat-option>
+                    </mat-select>
+                </div>
+
+            </div>
+
+            <div class="input-container" fxLayout="column" fxLayoutAlign="start start" fxFlex="49">
+                <mat-label class="lable-title">Report To</mat-label>
+                <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+                    <mat-select class="input-content" formControlName="teamLeadId">
+                        <mat-option *ngFor="let teamLead of teamLeads" [value]="teamLead.userId">
+                            {{teamLead.fName}}
+                        </mat-option>
+                    </mat-select>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-container" fxLayout="column" fxLayoutAlign="start start">
+            <mat-label class="lable-title">Address</mat-label>
+            <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+                <input class="input-content" formControlName="address" type="text" placeholder="Type Address"
+                    style="min-width: 95%;">
+            </div>
+        </div>
+
+        <div class="input-double" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <div class="input-container" fxLayout="column" fxLayoutAlign="start start" fxFlex="49">
+                <mat-label class="lable-title">Designation</mat-label>
+                <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+                    <input class="input-content" formControlName="designation" type="text" placeholder="Enter Email">
+                </div>
+            </div>
+
+            <div class="input-container" fxLayout="column" fxLayoutAlign="start start" fxFlex="49">
+                <mat-label class="lable-title">Choose a date</mat-label>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <input class="input-content" formControlName="joiningDate" matInput [matDatepicker]="datepicker">
+                    <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #datepicker>
+                        <mat-datepicker-actions>
+                            <button mat-button matDatepickerCancel>Cancel</button>
+                            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                        </mat-datepicker-actions>
+                    </mat-datepicker>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer" fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="10px">
+        <button class="action-btns" mat-button style="background-color: #f6f7fb; color:#495057"
+            (click)="onCancl()">Cancel</button>
+        <button *ngIf="!isEdit" class="action-btns" mat-raised-button color="primary" (click)="onSave()">Save</button>
+        <button *ngIf="isEdit" class="action-btns" mat-raised-button color="primary" (click)="onEdit()">Update</button>
+    </div>
+</div>

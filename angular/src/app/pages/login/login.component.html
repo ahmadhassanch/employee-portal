@@ -1,0 +1,21 @@
+<div class="container">
+
+	<div class="login-container">
+		<mat-form-field fxFlex="100" appearance="outline" style="width: 100%;">
+			<mat-label>Name</mat-label>
+			<input autofocus="true" matInput  [formControl]="name"  autocomplete="off">
+			
+		</mat-form-field>
+
+		<mat-form-field fxFlex="100" appearance="outline" style="width: 100%;">
+			<mat-label>Password</mat-label>
+			<input autofocus="true" matInput  [formControl]="password"  autocomplete="off">
+			
+		</mat-form-field>
+
+		<button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+
+		<div *ngIf="iswrongCredentials" class="error-msg">username and password does not match</div>
+	</div>
+
+</div>

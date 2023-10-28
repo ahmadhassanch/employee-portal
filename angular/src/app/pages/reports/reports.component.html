@@ -1,0 +1,42 @@
+<div class="main-container" fxLayout="column" fxLayoutAlign="start start">
+    <div class="content-head">
+     <div class="top-bar" fxLayout="row" fxLayoutAlign="space-between center">
+         <div class="title">Reports</div>
+       
+         
+             <button class="btn-new" (click)="createReport()">Create Report</button>
+     </div>
+ 
+     <div class="content-body" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+
+
+        <div class="settings-panel" fxFlex="25"></div>
+        <div class="pdf-panel" fxFlex="75" fxLayout="column" fxLayoutAlign="start start">
+
+          <div class="summary">Last 7 Days Summary</div>
+
+         <div class="table-card">
+            <table >
+    
+              <tr class="table-head">
+                  <td class="table-col">Date</td>
+                  <td class="table-col-last">Description</td>
+                  <td class="action-col" style="color: #707070;">Action</td>
+                  
+              </tr>
+    
+              <ng-container *ngFor="let item of reportData">
+                <tr style="width: 100%;">
+                    <td class="table-col">{{item.reportDate * 1000  | date: 'fullDate'}}</td>
+                    <td class="table-col-last">{{item.description }}</td>
+                    <td class="action-col">
+                      <mat-icon style="cursor: pointer;" (click)="onEdit(item)">edit</mat-icon>
+                    </td>
+                </tr>
+              </ng-container>
+            </table>
+          </div>
+        </div>
+       </div>
+    </div>
+ </div>

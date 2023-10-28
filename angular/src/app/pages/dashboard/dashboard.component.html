@@ -1,0 +1,83 @@
+<div class="main-container" fxLayout="column" fxLayoutAlign="start start">
+    <div class="content-head">
+     <div class="top-bar" fxLayout="row" fxLayoutAlign="space-between center">
+         <div class="title">Mark Attendence</div>
+         <div class="watch-container" fxLayout="row" fxLayoutAlign="space-between center">
+            <ng-container *ngIf="hours<10">0</ng-container>{{hours}}&nbsp;
+            <mat-divider vertical style="height: 20px;"></mat-divider>&nbsp;
+            <ng-container *ngIf="minutes<10">0</ng-container>{{minutes}}&nbsp;
+            <mat-divider vertical style="height: 20px;"></mat-divider>&nbsp;
+            <ng-container *ngIf="seconds<10">0</ng-container>{{seconds}}
+         </div>
+         
+             <button class="btn-new" (click)="markCheckIn()">{{!checkedIn? 'Check In' : 'Check Out'}}</button>
+     </div>
+ 
+     <div class="content-body" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+
+
+        <div class="settings-panel" fxLayout="column" fxLayoutAlign="start start"fxFlex="35" fxLayoutGap="10px">
+          <div class="active-task" fxLayout="column" fxLayoutAlign="start start" >
+            <div fxLayout="row" fxLayoutAlign="space-between end" style="width: 100%; padding-bottom: 4px;">
+              <span style="font-weight: 500;" fxFlex="30">Task</span>
+              <div fxLayout="row" fxLayoutAlign="end center" fxFlex="70" fxLayoutGap="10px">
+                <button class="action-btn" [disabled]="!activeTask" fxLayout="row" fxLayoutAlign="center center" (click)="stopTask()"><mat-icon>stop</mat-icon></button>
+                <button class="action-btn" [disabled]="!checkedIn" fxLayout="row" fxLayoutAlign="center center" (click)="activateTask()"><mat-icon>select_all</mat-icon></button>
+              </div>
+            </div>
+            <div class="task-description" >
+              <span *ngIf="activeTask">{{activeTask['title']}}</span>
+              <span *ngIf="!activeTask">No Task Selected</span>
+            </div>
+          </div>
+
+          <div class="active-task" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px" *ngIf="activeTask">
+            <div fxLayout="row" fxLayoutAlign="space-between end" style="width: 100%; padding-bottom: 4px;">
+              <span style="font-weight: 500;" fxFlex="30">Sub Task</span>
+            </div>
+
+            <ng-container *ngFor="let subTask of subTasks">
+              <div class="task-description" style="width: 100%;" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                <mat-icon>check_box</mat-icon><span fxFlex="90">{{subTask.title}}</span>
+                <!-- <mat-icon>keyboard_arrow_down</mat-icon> -->
+              </div>
+
+            </ng-container>
+          </div>
+
+        </div>
+        <div class="pdf-panel" fxFlex="65" fxLayout="column" fxLayoutAlign="start start">
+
+          <div class="summary">Last 7 Days Summary</div>
+
+         <div class="table-card">
+            <table >
+    
+              <tr class="table-head">
+                  <td class="table-col">Date</td>
+                  <td class="table-col">Checked In</td>
+                  <td class="table-col">Checked Out</td>
+                  <td class="table-col-last">Working Hours</td>
+              </tr>
+    
+              <ng-container *ngFor="let item of attendenceData">
+                <tr>
+    
+                    <td class="table-col">{{item.attendenceDate*1000 | date: 'dd-MMM-yyyy'}}</td>
+                    <td class="table-col">{{item.checkInTime*1000 | date: 'hh:mm a'}}</td>
+                    <td class="table-col">{{item.checkOutTime*1000 | date: 'hh:mm a'}}</td>
+                    <td class="table-col-last">{{(item.checkOutTime - item.checkInTime)| dateDifference}}</td>
+                   
+                </tr>
+              </ng-container>
+            </table>
+    
+    
+          </div>
+
+         
+        </div>
+
+       </div>
+    </div>
+ </div>

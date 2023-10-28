@@ -1,0 +1,39 @@
+<div class="form-container" fxLayout="column" [formGroup]="reportForm">
+    <div class="header" fxLayout="row" fxLayoutAlign="start center">
+        <span style="font-weight: 500;">Add Report</span>
+    </div>
+    <div class="body" fxLayout="column"  fxLayoutGap="15px">
+
+        <div class="input-container" fxLayout="column" fxLayoutAlign="start start" >
+            <mat-label  class="lable-title">Description</mat-label>
+            <div fxLayout="row" class="input-section" fxLayoutAlign="space-between start">
+                <textarea required class="input-content" type="text" formControlName="description" placeholder="Type Title" style="min-width: 95%; height: 132px;"></textarea>
+            </div>
+        </div>
+
+        <div class="input-container" fxLayout="column" fxLayoutAlign="start start" >
+            <mat-label class="lable-title">Choose a date</mat-label>
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <input class="input-content" formControlName="reportDate" matInput [matDatepicker]="datepicker">
+                <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker>
+                    <mat-datepicker-actions>
+                    <button mat-button matDatepickerCancel>Cancel</button>
+                    <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                    </mat-datepicker-actions>
+                </mat-datepicker>
+            </div>
+            
+        </div>
+    </div>
+    <div class="footer"  fxLayout="row" fxLayoutAlign="end end"  fxLayoutGap="10px">
+        <button class="action-btns" mat-button style="background-color: #f6f7fb; color:#495057" (click)="onCancel()">Cancel</button>
+        <button *ngIf="!isEdit" class="action-btns" mat-raised-button color="primary" (click)="onSave()"
+        [disabled]="!reportForm.valid"
+        >Save</button>
+
+        <button *ngIf="isEdit" class="action-btns" mat-raised-button color="primary" (click)="onEdit()"
+        [disabled]="!reportForm.valid"
+        >Edit</button>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+html, body { height: 100%; }
+body { 
+    --primary-color: #d7816a;
+    --secondary-color: #be513c;
+    --header-color: #cd6e57;
+
+    margin: 0; font-family: "Poppins",sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left; }
+
+    .custom-modalbox {
+        mat-dialog-container {
+            padding: 0;
+        }
+    }

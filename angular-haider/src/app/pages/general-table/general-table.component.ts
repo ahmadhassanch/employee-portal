@@ -21,6 +21,7 @@ export class GeneralTableComponent implements AfterViewInit, OnInit {
     refresh: () => void;
     add: () => void;
   };
+  shouldAppear = false;
   searchValue: string = '';
   @Output() searchQuery = new EventEmitter<string>();
   dataSource: any;
@@ -46,7 +47,12 @@ export class GeneralTableComponent implements AfterViewInit, OnInit {
   }
   openFilter(column: string) {
     console.log('Filter clicked for column', column);
+    this.shouldAppear = !this.shouldAppear;
     // Implement your filter logic here
     // You can use a dialog or menu to set filter criteria for the specified column
+  }
+
+  buttonFunc(columns: any) {
+    console.log(columns);
   }
 }
